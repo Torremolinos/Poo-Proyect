@@ -57,7 +57,7 @@ export class TareasManager {
     }
 
     setContador() {
-        localStorage.setItem("contador" + this.contador) //localStorage tiene clave (contador) y el valor "This.contador"
+        localStorage.setItem("contador", this.contador) //localStorage tiene clave (contador) y el valor "This.contador"
     }
 
     inicializarContador() {
