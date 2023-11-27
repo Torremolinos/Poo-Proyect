@@ -17,7 +17,7 @@ export class TareasManager {
         this.setArregloTareas();
     }
 
-    listaTareas() {
+    listarTareas() {
         this.listaTareas.innerHTML = ''; //una forma de inicializar la descripcion de la tarea.
         //tarea sale del foreach.
         this.arregloTareas.reverse().forEach((tarea) => {
@@ -61,19 +61,19 @@ export class TareasManager {
     }
 
     inicializarContador() {
-        if (this.getContador() !=null){
+        if (this.getContador() != null) {
             this.contador = this.getContador();
         }
     }
 
-    getArregloTareas(){
+    getArregloTareas() {
         this.setContador();
         const arreglo = JSON.parse(localStorage.getITem("arregloTareas")); //de este arreglo que tenemos parseamos este array y obtenemos el objeto tareas, es decir quito la array y me quedo solo con las Tareas.
         return arreglo || []; //retornamos el array vacio, sin null ni undefined para que no de problemas.
     }
 
-    setArregloTareas(){
+    setArregloTareas() {
         localStorage.setItem("arreTareas", JSON.stringify(this.arregloTareas));
-        
+        this.listarTareas()
     }
 }
