@@ -11,7 +11,11 @@ export class TareasManager {
 
     agregarTarea(descripcion) { 
         this.contador++;
-        const nuevaTarea = new Tarea(this.contador, descripcion);
+        const nuevaTarea = new Tarea(this.contador, descripcion); //una nueva tarea se instancia usando el contador para el id y la description.
+        this.arregloTareas.push(nuevaTarea); //agregamos la tarea al array.
+        this.setContador();
+        this.setArregloTareas();
+        
 
     }
 }
