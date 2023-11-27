@@ -54,6 +54,7 @@ export class TareasManager {
 
     getContador() {
         const cont = localStorage.getItem("contador");
+        return cont;
     }
 
     setContador() {
@@ -73,7 +74,7 @@ export class TareasManager {
     }
 
     setArregloTareas() {
-        localStorage.setItem("arreTareas", JSON.stringify(this.arregloTareas));
+        localStorage.setItem("arregloTareas", JSON.stringify(this.arregloTareas));
         this.listarTareas()
     }
 }
