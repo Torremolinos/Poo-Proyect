@@ -7,9 +7,8 @@ class Tarea {
         this.id = id;
         this.descripcion = descripcion;
     }
-    
-    editar(descripcion){
-        this.descripcion = descripcion;
 
+    editar(descripcion) {
+        this.descripcion = descripcion;
     }
 }
