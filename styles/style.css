@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'VinaSans';
+    src: url('../assets/fonts/VinaSans-Regular.ttf');
+}
+body{
+    background: rgb(5, 5, 20);
+    background-image: url('../assets/imgs/totorojpg.jpg');
+    /*cubre toda el area del body*/
+    background-size: cover;
+    /*evita que a imagen se repita*/
+    background-repeat: no-repeat;
+    /*hace que la imagen de fondo sea fija*/
+    background-attachment: fixed;
+}
+
+.container{
+    font-family: 'VinaSans';
+    background: radial-gradient(circle,rgb(225, 221, 157) 0%, rgb(91, 39, 10)50%);
+    max-width: 400px;
+    margin: auto;
+    padding: 10px,20px;
+    border-radius: 10px;
+    box-shadow: 2px,2px,2px,1px rgb(0,0,0,0.5);
+}
+button{
+    font-family: 'VinaSans';
+    padding: 2px;
+    margin: 2px;
+}
+.header{
+    font-family: 'VinaSans';
+    border-bottom: 1px solid black;
+}
+input{
+    background-color: rgb(91, 39, 10);
+    color: white;
+}
+.boton-agregar{
+    display: block;
+    margin: auto;
+    margin-top: -15px;
+    padding: 4px 10px;
+    font-weight: bold;
+    border: 3px solid black;
+}
+.boton-agregar:hover{
+    background: rgb(91, 39, 10);
+}
+.lista-tareas{
+    list-style: none;
+    padding: 0;
+}
+
+@keyframes aparecer{
+    0%{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY();
+    }
+}
+
+.lista-tareas li{
+    animation: aparecer 0.8s ease-in-out;
+}
+
+@keyframes desaparecer{
+    100%{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    0%{
+        opacity: 1;
+        transform: translateY();
+    }
+}
+.lista-tareas li.eliminada{
+    animation: desaparecer 0.5 ease-in;
+}
+

@@ -20,6 +20,11 @@ export class TareasManager {
     listarTareas() {
         this.listaTareas.innerHTML = ''; //una forma de inicializar la descripcion de la tarea.
         //tarea sale del foreach.
+        //aqui ponemos una condicion, dependiendo de si hay o no algo en el localstorage, haremos un get item para ver si hay algo.
+        if (localStorage.getItem("arregloTareas") !== null); {
+            this.arregloTareas = this.getArregloTareas();
+        }
+
         this.arregloTareas.reverse().forEach((tarea) => {
             this.listaTareas.innerHTML += `<li id="${tarea.id}">
             <input type="text" class="input-tarea" value="${tarea.descripcion}">
@@ -29,13 +34,11 @@ export class TareasManager {
     }
 
     editarTarea(idTarea, descripcion) {
-        const tarea = this.arregloTareas.find((t) => t.id === idTarea); // esta linea de codigo significa que cuando nosotros vayamos a poner una tarea, obtener y cambiar la descripcion de la tarea objeto. La T es de tareas.
-
+        const tarea = this.arregloTareas.find((t) => t.id == idTarea); // esta linea de codigo significa que cuando nosotros vayamos a poner una tarea, obtener y cambiar la descripcion de la tarea objeto. La T es de tareas.
         //si nos encuentra la tarea con el if. Editareamos la tarea.
         if (tarea) {
             tarea.editar(descripcion);
             this.setArregloTareas();
-
         }
     }
 
@@ -69,8 +72,11 @@ export class TareasManager {
 
     getArregloTareas() {
         this.setContador();
-        const arreglo = JSON.parse(localStorage.getITem("arregloTareas")); //de este arreglo que tenemos parseamos este array y obtenemos el objeto tareas, es decir quito la array y me quedo solo con las Tareas.
-        return arreglo || []; //retornamos el array vacio, sin null ni undefined para que no de problemas.
+        const arreglo = JSON.parse(localStorage.getItem("arregloTareas")); //de este arreglo que tenemos parseamos este array y obtenemos el objeto tareas, es decir quito la array y me quedo solo con las Tareas.
+        /*convertir objetos genericos en instancias de clase Tarea*/
+        const tareasConvertidas = arreglo.map((tarea) => new Tarea(tarea.id, tarea.descripcion));
+        return tareasConvertidas;
+        // return arreglo || []; //retornamos el array vacio, sin null ni undefined para que no de problemas.
     }
 
     setArregloTareas() {
